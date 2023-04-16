@@ -1,6 +1,6 @@
 <?php
 
-class Export2Valine_Action extends Typecho_Widget implements Widget_Interface_Do
+class Export2Waline_Action extends Typecho_Widget implements Widget_Interface_Do
 {
   /**
    * 导出 JSON
@@ -37,24 +37,21 @@ class Export2Valine_Action extends Typecho_Widget implements Widget_Interface_Do
     $results = array();
     foreach($tpComments as $comment) {
       $slug = $contentHash[$comment["cid"]];
-      $time = date("Y-m-d\TH:i:s.000\Z", $comment["created"]);
+      $time = date("Y-m-d H:i:s", $comment["created"]);
 
       $arr = array(
         "objectId" => md5($comment["coid"]),
-        "QQAvatar" => "",
         "comment" => $comment["text"],
-        "insertedAt" => array(
-          "__type" => "Date",
-          "iso" => $time
-        ),
+        "insertedAt" => $time,
         "createdAt" => $time,
         "updatedAt" => $time,
+        "status" => "approved",
         "ip" => $comment["ip"],
         "link" => $comment["url"],
         "mail" => $comment["mail"],
         "nick" => $comment["author"],
         "ua" => $comment["agent"],
-        "url" => "/{$slug}.html"
+        "url" => "/archives/{$slug}.html"
       );
 
       if($comment["parent"]) {
@@ -66,14 +63,12 @@ class Export2Valine_Action extends Typecho_Widget implements Widget_Interface_Do
     }
     
     // 备份文件名
-    $fileName = 'valine.' . date('Y-m-d') . '.jsonl';
+    $fileName = 'Waline.' . date('Y-m-d') . '.json';
     header('Content-Type: application/json');
     header('Content-Disposition: attachment; filename=' . $fileName);
     
-    echo '#filetype:JSON-streaming {"type":"Class","class":"Comment"}';
-    echo '\n';
     foreach($results as $item) {
-      echo '\n';
+      echo ',';
       echo json_encode($item);
     }
   }
