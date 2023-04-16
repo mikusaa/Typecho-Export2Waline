@@ -1,5 +1,5 @@
 ## Export2Waline
-暴力修改原 [Export2Valine](https://github.com/lizheming/typecho-export-valine) 插件，使其导出的评论能间接地通过 Waline 后台导入评论。
+暴力修改原 [Export2Valine](https://github.com/lizheming/typecho-export-valine) 插件，使其导出的评论能间接地通过 Waline 后台导入。
 
 ## 如何使用
 
