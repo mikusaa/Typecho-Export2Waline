@@ -1,13 +1,13 @@
 <?php
 /**
- * 评论数据导出到 Valine
+ * 评论数据导出到 Waline
  *
- * @package Export2Valine
- * @author 公子
- * @version 0.1.0
- * @link https://imnerd.org
+ * @package Export2Waline
+ * @author mikusa
+ * @version 0.0.1
+ * @link https://github.com/mikusaa/Typecho-Export2Waline
  */
-class Export2Valine_Plugin implements Typecho_Plugin_Interface
+class Export2Waline_Plugin implements Typecho_Plugin_Interface
 {
     /**
      * 激活插件方法,如果激活失败,直接抛出异常
@@ -18,8 +18,8 @@ class Export2Valine_Plugin implements Typecho_Plugin_Interface
      */
     public static function activate()
     {
-        Helper::addAction('export2valine', 'Export2Valine_Action');
-        Helper::addPanel(1, 'Export2Valine/panel.php', _t('评论导出'), _t('评论导出'), 'administrator');
+        Helper::addAction('export2Waline', 'Export2Waline_Action');
+        Helper::addPanel(1, 'Export2Waline/panel.php', _t('评论导出'), _t('评论导出'), 'administrator');
 
         return _t('插件已经激活，请设置插件以正常使用！');
     }
@@ -34,8 +34,8 @@ class Export2Valine_Plugin implements Typecho_Plugin_Interface
      */
     public static function deactivate()
     {
-        Helper::removeAction('export2valine');
-        Helper::removePanel(1, 'Export2Valine/panel.php');
+        Helper::removeAction('export2Waline');
+        Helper::removePanel(1, 'Export2Waline/panel.php');
     }
 
     /**
