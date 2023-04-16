@@ -10,3 +10,8 @@
 **注：**
 
 1. 插件导出的数据所有网页的格式都为 `/archives/{slug}.html` 格式，需要将你的网站的 URL 格式设置成对应的格式才能显示评论。
+
+## LICENSE
+
+[MIT LICENSE](https://github.com/mikusaa/Typecho-Export2Waline/blob/master/LICENSE)
+
